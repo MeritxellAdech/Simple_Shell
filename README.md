@@ -50,7 +50,7 @@ The project will go through phases or versions, like any other project or applic
 This project is created for a team of two(2) people, and for only them. Other forms or collaboration is not accepted
 
 ## Collaborators
-See file [AUTHORs]()
+See file [AUTHORS]()
 
 ### Important
 This project is under ALX SE evaluation. 
