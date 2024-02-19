@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #include "_simple_shell.h"
+=======
+#include "simple_shell.h"
+>>>>>>> refs/remotes/origin/master
 
 /**
  * check_mode - test whether the shell is in interactive mode
