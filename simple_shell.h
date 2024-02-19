@@ -6,9 +6,9 @@
 #include <unistd.h>
 
 /*Macros*/
-#define I_MODE = 1
-#define NON_I_MODE = 0
-#define ERR_OCCURED = -1
+#define I_MODE 1
+#define NON_I_MODE 0
+#define ERR_OCCURED -1
 
 
 /*Structs*/
