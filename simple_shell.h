@@ -3,7 +3,7 @@
 
 /*Headers*/
 #include <stdio.h>
-
+#include <unistd.h>
 
 /*Macros*/
 #define I_MODE = 1
