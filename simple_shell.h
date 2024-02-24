@@ -28,5 +28,9 @@ int check_file(char *path);
 int _putchar(char c);
 int _exec(char *commands);
 int check_mode(void);
+char *_strcpy(char *dest, char *src);
+int _strlen(char *str);
+int _strcmp(char *s1, char *s2);
+
 
 #endif
