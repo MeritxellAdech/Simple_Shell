@@ -11,7 +11,7 @@ int _strlen(char *str)
 	int i = 0;
 
 	if (str == NULL)
-		return (NULL);
+		return (-1);
 	/*count the number of characters*/
 	while (*str)
 	{
