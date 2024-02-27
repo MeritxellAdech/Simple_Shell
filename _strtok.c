@@ -1,52 +1,94 @@
 #include "simple_shell.h"
 
 /**
+ * tok_count - counts the number of tokens in a string
+ *
+ * @str: the given string
+ * @delim: delimeter used for tokenization
+ * Return: the number of counted tokens from @str
+ */
+int tok_count(char *str, char *delim)
+{
+	int count = 0, len = 0;
+	char *token = NULL;
+	char *tmp = NULL;
+
+	/*count the number of character in str*/
+	len = _strlen(str) + 1;
+	/*allocate memory for tmp*/
+	tmp = malloc(sizeof(char) * len);
+	/*check that the allocation worked successul*/
+	if (tmp == NULL)
+		return (-1);
+
+	/*copy str to tmp to preserve the original string*/
+	_strcpy(tmp, str);
+	/*create the token to be able to count them*/
+	token = strtok(tmp, delim);
+
+	/*count the found tokens*/
+	while (token != NULL)
+	{
+		count++;
+		/*get the next token*/
+		token = strtok(NULL, delim);
+	}
+	/*Free tmp since we are done using it*/
+	free(tmp);
+
+	/*return the number of found tokens*/
+	return (count);
+}
+
+
+/**
  * _strtok - tokenize a string by given delimiter
  *
- * @string: The string to be tokenize
+ * @str: The string to be tokenize
  *
- * @delimiter: The given delimiter to tokenize a strin
+ * @delim: The given delimiter to tokenize a strin
  *
- * Return: pointer to the next string or
- * NULL if there are no more token
+ * Return: an array of tokens
  *
  */
 
-char *_strtok(char *string, char *delimiter)
+char **_strtok(char *str, char *delim)
 {
-	static char *input;
-	char *result;
-	int i;
+	char **tokens = NULL;
+	char *token =  NULL;
+	int len = 0, tok_len = 0, i = 0;
 
 	/* Initialize the input string */
-	if (string != NULL)
-		input = string;
-
-	/* case for the final token  */
-	if (input == NULL)
+	if (str == NULL)
 		return (NULL);
 
-	/* Memory to store the extracted string */
-	result = malloc(_strlen(input) + 1);
+	/* count the number of characters in str*/
+	len = _strlen(str) + 1;
 
-	/*Store the extracted string in array*/
-	for (i = 0; input[i] != '\0'; i++)
+	/* allocate memory for token*/
+	token = malloc(sizeof(char) * len);
+	/*handle memory allocation errors*/
+	if (token == NULL)
+		return (NULL);
+	/* copy str to token*/
+	_strcpy(token, str);
+	/*count the number of tokens in str*/
+	tok_len = tok_count(token, delim);
+	/* allocate memory for the array of tokens to hold all the tokens*/
+	tokens = malloc(sizeof(char) * (tok_len + 1));
+	if (tokens == NULL)
+		return (NULL);
+	/* tokenize str by getting the first token*/
+	token = strtok(token, delim);
+	/*copy the tokens into the array*/
+	while (token != NULL)
 	{
-		/*If delimiter is not reached, then add the current character to result[i]*/
-		if (input[i] != *delimiter)
-			result[i] = input[i];
-		/* Else store the string formed */
-		else
-		{
-			result[i] = '\0';
-			input = input + i + 1;
-			return (result);
-		}
+		tokens[i] = token;
+		i++;
+		/*get the next token*/
+		token = strtok(NULL, delim);
 	}
-
-	/* End the loop */
-	result[i] = '\0';
-	input = NULL;
-	/* Return the resultant pointer to the string*/
-	return (result);
+	free(token);
+	tokens[i] = NULL;
+	return (tokens);
 }
