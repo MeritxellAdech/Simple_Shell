@@ -31,6 +31,7 @@ int check_mode(void);
 char *_strcpy(char *dest, char *src);
 int _strlen(char *str);
 int _strcmp(char *s1, char *s2);
-
+char **_strtok(char *str, char *delim);
+int tok_count(char *str, char *delim);
 
 #endif
