@@ -83,6 +83,7 @@ char **_strtok(char *str, char *delim)
 	/*copy the tokens into the array*/
 	while (token != NULL)
 	{
+		printf("%s\n", token);
 		tokens[i] = token;
 		i++;
 		/*get the next token*/
@@ -92,3 +93,4 @@ char **_strtok(char *str, char *delim)
 	tokens[i] = NULL;
 	return (tokens);
 }
+
