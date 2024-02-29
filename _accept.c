@@ -1,5 +1,4 @@
 #include "simple_shell.h"
-
 /**
  * _accept - displays a prompt to the user and accepts the command
  * to be executed
